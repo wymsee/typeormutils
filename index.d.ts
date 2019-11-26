@@ -14,7 +14,6 @@ type GenPartial<T> = {
     [P in keyof T]?: T[P] extends Moment ? Moment | string :
         T[P] extends Date ? Date | string :
         T[P] extends boolean ? boolean | 0 | 1 :
-        T[P] extends Big ? Big | string :
         T[P];
 }
 
