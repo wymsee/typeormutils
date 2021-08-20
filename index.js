@@ -46,7 +46,11 @@ const momentTransformer = {
     // called on value before persisting to database
     to: function(value) {
         if (moment.isMoment(value)) {
-            return value.utc().toISOString();
+            try {
+                return value.utc().toISOString();
+            } catch (err) {
+                return moment.utc(value._i).toISOString();
+            }
         }
         return value;
     }
